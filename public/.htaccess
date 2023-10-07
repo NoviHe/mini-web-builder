@@ -1,0 +1,18 @@
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^many-pacquiao\.html$ index.php?url=nvireview/many_pacquiao [L]
+    RewriteRule ^many-pacquiao$ index.php?url=nvireview/many_pacquiao [L]
+
+    RewriteRule ^sitemap\.xml$ index.php?url=sitemap [L]
+    RewriteRule ^sitemap$ index.php?url=sitemap [L]
+    RewriteRule ^sitemap-post\.xml$ index.php?url=sitemap/post [L]
+    RewriteRule ^sitemap-post$ index.php?url=sitemap/post [L]
+    RewriteRule ^sitemap-0\.xml$ index.php?url=sitemap/search [L]
+    RewriteRule ^sitemap-0$ index.php?url=sitemap/search [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+</ifModule>
