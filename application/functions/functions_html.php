@@ -9,26 +9,6 @@ function load_script($path)
     echo '<script type="text/javascript" src="' . BASE_PATH . '/public/' . $path . '"></script>';
 }
 
-function url_movie($id, $title)
-{
-    return URL_WEBSITE . '/movie/watch/' . $id . '/' . permalink($title) . URL_END;
-}
-
-function url_tv($id, $title)
-{
-    return URL_WEBSITE . '/tv/watch/' . $id . '/' . permalink($title) . URL_END;
-}
-
-function url_cat($id, $query)
-{
-    return URL_WEBSITE . '/home/genre/' .  $id . '/' . $query;
-}
-
-function url_search($query)
-{
-    return URL_WEBSITE . '/search?s=' . permalink($query);
-}
-
 function permalink($str, $options = array())
 {
     // Make sure string is in UTF-8 and strip invalid UTF-8 characters
@@ -127,33 +107,6 @@ function permalink($str, $options = array())
     return $options['lowercase'] ? mb_strtolower($str, 'UTF-8') : $str;
 }
 
-function get_search_query($query)
-{
-    $newquery = permalink($query);
-    return trim(str_replace('-', ' ', $newquery));
-}
-
-function limit_word($query, $word_limit = 5)
-{
-    $words = explode(' ', $query);
-    return implode(' ', array_slice($words, 0, $word_limit));
-}
-
-function curent_url()
-{
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-        $url = "https://";
-    else
-        $url = "http://";
-    // Append the host(domain name, ip) to the URL.   
-    $url .= $_SERVER['HTTP_HOST'];
-
-    // Append the requested resource location to the URL   
-    $url .= $_SERVER['REQUEST_URI'];
-
-    return $url;
-}
-
 function histats_code()
 {
     // <!-- Histats.com  START  (aync)-->
@@ -169,12 +122,4 @@ function histats_code()
     $histats .= "<noscript><a href='/' target='_blank'><img  src='//sstatic1.histats.com/0.gif?" . HISTATS_ID . "&101' alt='' border='0'></a></noscript>";
     return $histats;
     // <!-- Histats.com  END  -->`;
-}
-
-function cache_expire($file, $expire = 86400)
-{
-    $range    = strtotime(date('Y-m-d G:i:s')) - filemtime($file);
-    if ($range >= $expire) {
-        return true;
-    }
 }
