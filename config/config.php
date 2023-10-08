@@ -2,8 +2,8 @@
 define('DEVELOPMENT_ENVIRONMENT', true);
 // ===== Hosted ==================== //
 
-define('BASE_PATH', 'https://nvireview.com');
-define('URL_WEBSITE', 'https://nvireview.com');
+define('BASE_PATH', 'https://live.nvireview.com/');
+define('URL_WEBSITE', 'https://live.nvireview.com/');
 define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/public');
 
 // ===== Local ==================== //
