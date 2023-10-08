@@ -23,13 +23,13 @@
         echo $style;
     endif; ?>
 </head>
+<frameset border="0" rows="100%,*" cols="100%" frameborder="no">
+    <frame name="TopFrame" scrolling="yes" noresize src="http://nvireview.com">
+        <frame name="BottomFrame" scrolling="no" noresize>
+            <noframes></noframes>
+</frameset>
 
 <body>
-    <frameset border="0" rows="100%,*" cols="100%" frameborder="no">
-        <frame name="TopFrame" scrolling="yes" noresize src="http://nvireview.com">
-            <frame name="BottomFrame" scrolling="no" noresize>
-                <noframes></noframes>
-    </frameset>
     <section class="container">
         <div class="row mt-5 pt-2 text-center">
             <div class="col-md-12 mb-2">
