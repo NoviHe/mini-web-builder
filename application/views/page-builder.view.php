@@ -23,11 +23,11 @@
         echo $style;
     endif; ?>
 </head>
-<frameset border="0" rows="100%,*" cols="100%" frameborder="no">
+<!-- <frameset border="0" rows="100%,*" cols="100%" frameborder="no">
     <frame name="TopFrame" scrolling="yes" noresize src="http://nvireview.com">
         <frame name="BottomFrame" scrolling="no" noresize>
             <noframes></noframes>
-</frameset>
+</frameset> -->
 
 <body>
     <section class="container">
