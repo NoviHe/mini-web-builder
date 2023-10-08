@@ -1,9 +1,9 @@
 <?php
-class AdminModel extends Model
+class UsersModel extends Model
 {
     public function __construct()
     {
         $this->connect();
-        $this->_table = "admin";
+        $this->_table = "users";
     }
 }

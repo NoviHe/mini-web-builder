@@ -29,4 +29,14 @@ class AdminController extends Controller
     {
         $this->getController('builder', $action, $parameter);
     }
+
+    public function logout()
+    {
+        if ($_POST['logout']) {
+            session_destroy();
+            return $this->redirect('home');
+        } else {
+            return $this->redirect('admin');
+        }
+    }
 }

@@ -7,12 +7,12 @@ use Controller;
 class AdminMainController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     if (empty($_SESSION['username']) and empty($_SESSION['password'])) {
-    //         $this->redirect('admin/login');
-    //     }
-    // }
+    public function __construct()
+    {
+        if (empty($_SESSION['login']['username']) and empty($_SESSION['login']['password'])) {
+            $this->redirect('login');
+        }
+    }
 
     public function template($viewName, $bc = '', $data = array())
     {

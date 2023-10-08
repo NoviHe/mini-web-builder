@@ -6,12 +6,13 @@ class BuilderController extends AdminMainController
 {
     function __construct()
     {
+        parent::__construct();
         $this->model('page_builder');
     }
 
     public function index()
     {
-        $idUser = 12;
+        $idUser = $_SESSION['login']['id_user'];
         $query = $this->page_builder->selectWhere(array('user_id' => $idUser), 'created_at', 'DESC');
         $lists = $this->page_builder->getResult($query);
 
@@ -38,8 +39,8 @@ class BuilderController extends AdminMainController
                 return $this->template('admin/page-builder/create', 'Create Page', array('error' => $message));
             }
 
-            $username = 'pilotke3';
-            $idUser = 12;
+            $username = $_SESSION['login']['username'];
+            $idUser = $_SESSION['login']['id_user'];
 
             $public_path = 'public/img/uploads/';
             $upload_path = ROOT . DS . $public_path;
@@ -62,7 +63,7 @@ class BuilderController extends AdminMainController
                     if (in_array($extensiFile, $allowedExtension) === true) {
                         if ($sizeFile < $maxSize) {
                             move_uploaded_file($tempFile, $targetFilePath);
-                            $gambar_header = BASE_PATH . DS . $public_path . $fileName;
+                            $gambar_header = BASE_PATH . '/' . $public_path . $fileName;
                         } else {
                             $message = "UKURAN FILE TERLALU BESAR";
                             return $this->template('admin/page-builder/create', 'Create Page', array('error' => $message));
@@ -92,7 +93,7 @@ class BuilderController extends AdminMainController
                     if (in_array($extensiFile, $allowedExtension) === true) {
                         if ($sizeFile < $maxSize) {
                             move_uploaded_file($tempFile, $targetFilePath);
-                            $gambar_footer = BASE_PATH . DS . $public_path . $fileName;
+                            $gambar_footer = BASE_PATH . '/' . $public_path . $fileName;
                         } else {
                             $message = "UKURAN FILE TERLALU BESAR";
                             return $this->template('admin/page-builder/create', 'Create Page', array('error' => $message));
@@ -113,10 +114,10 @@ class BuilderController extends AdminMainController
                 'user_id' => $idUser,
                 'title' => $_POST['title'],
                 'slug' => $_POST['slug'],
-                'text_header' => $_POST['text_header'],
+                'text_header' => str_replace('\'', '"', $_POST['text_header']),
                 'sumber_gambar_header' => $_POST['sumber_gambar_header'],
                 'gambar_header' => $gambar_header,
-                'text_body' => $_POST['text_body'],
+                'text_body' => str_replace('\'', '"', $_POST['text_body']),
                 'btn_name' => $_POST['btn_name'],
                 'btn_class' => $_POST['btn_class'],
                 'btn_type' => $_POST['btn_type'],
@@ -129,10 +130,10 @@ class BuilderController extends AdminMainController
                 'custom_css' => str_replace('\'', '"', $_POST['custom_css']),
                 'script_locker' => str_replace('\'', '"', $_POST['script_locker']),
             ];
-            // var_dump($data);
-            // die;
             $save = $this->page_builder->insert($data);
             $idPage = $this->page_builder->getId();
+            // var_dump($this->page_builder->getError());
+            // die;
             if ($save) :
                 $message = "SUCSESS";
                 return $this->redirect('admin/builder/edit/' . $idPage);
@@ -176,8 +177,8 @@ class BuilderController extends AdminMainController
                 }
             }
 
-            $username = 'pilotke3';
-            $idUser = 12;
+            $username = $_SESSION['login']['username'];
+            $idUser = $_SESSION['login']['id_user'];
 
             $public_path = 'public/img/uploads/';
             $upload_path = ROOT . DS . $public_path;

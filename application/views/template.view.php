@@ -19,7 +19,7 @@
     load_css('Rich-Text-Editor/richtext.min.css');
     load_script('Rich-Text-Editor/jquery.richtext.min.js');
     ?>
-    <title><?= !empty($breadcrumb) ? $breadcrumb . ' | ' : ''; ?>NviReview Administration</title>
+    <title><?= !empty($breadcrumb) ? $breadcrumb . ' | ' : ''; ?>Simple Page Builder</title>
     <link rel="shortcut icon" href="<?= BASE_PATH . '/public/img/' . FAVICON ?>">
 
 </head>
@@ -32,9 +32,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <?= navItem('admin', 'Dashboard') ?>
-                    <?= navItem('admin/builder', 'Page Builder') ?>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <?php if (isset($_SESSION['login'])) : ?>
+                        <?= navItem('admin', 'Dashboard') ?>
+                        <?= navItem('admin/builder', 'Page Builder') ?>
+                    <?php else : ?>
+                        <?= navItem('login', 'Sign In') ?>
+                        <?= navItem('login/register', 'Sign Up') ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

@@ -27,7 +27,10 @@ class Controller
 
     public function redirect($url = "")
     {
-        header('location: ' . BASE_PATH . DS . $url);
+        header('location: ' . URL_WEBSITE . DS . $url);
+        exit();
+        // session_write_close();
+        // session_regenerate_id(true);
     }
 
     public function validate($data)

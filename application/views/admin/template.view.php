@@ -26,7 +26,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        <div class="container-lg">
             <a class="navbar-brand" href="#"><?= SITE_NAME; ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,10 @@
                     <?= navItem('admin', 'Dashboard') ?>
                     <?= navItem('admin/builder', 'Page Builder') ?>
                 </ul>
+                <div class="float-end mx-4 d-flex">
+                    <div class="mx-2 pt-2"><span><?= $_SESSION['login']['full_name']; ?></span></div>
+                    <button type="button" id="btn-logout" class="btn btn-secondary"><i class="fa fa-power-off"></i> Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -48,8 +52,36 @@
         ?>
     </div>
 
+    <div class="modal" tabindex="-1" id="modal-logout">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="<?= URL_WEBSITE; ?>/admin/logout">
+                        <input type="hidden" id="id_delete" name="id_delete">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="logout" value="true" class="btn btn-danger"><i class="fa fa-power-off"></i> Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://kit.fontawesome.com/4827f8a5ff.js" crossorigin="anonymous"></script>
+    <script>
+        $('#btn-logout').on('click', function() {
+            console.log('clicked');
+            $('#modal-logout').modal('show');
+            $('.modal-title').text('Logout!!');
+            $('.modal-body p').text('Apakah anda yakin?');
+        })
+    </script>
 </body>
 
 </html>
