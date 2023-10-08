@@ -1,6 +1,9 @@
 <ifModule mod_rewrite.c>
     RewriteEngine On
 
+    RewriteRule ^p/(.*)\.html$ index.php?url=home/page/$1 [L]
+    RewriteRule ^p/(.*)$ index.php?url=home/page/$1 [L]
+
     RewriteRule ^many-pacquiao\.html$ index.php?url=nvireview/many_pacquiao [L]
     RewriteRule ^many-pacquiao$ index.php?url=nvireview/many_pacquiao [L]
 
