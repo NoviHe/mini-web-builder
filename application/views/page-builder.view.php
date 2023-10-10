@@ -82,7 +82,7 @@
     <?= $data['script_locker']; ?>
 
     <?php
-    // echo histats_code()
+    echo histats_code()
     ?>
 </body>
 
