@@ -36,9 +36,19 @@
                     <?= navItem('admin', 'Dashboard') ?>
                     <?= navItem('admin/builder', 'Page Builder') ?>
                 </ul>
-                <div class="float-end mx-4 d-flex">
-                    <div class="mx-2 pt-2"><span><?= $_SESSION['login']['full_name']; ?></span></div>
-                    <button type="button" id="btn-logout" class="btn btn-secondary"><i class="fa fa-power-off"></i> Logout</button>
+                <div class="float-end d-flex justify-content-end ">
+                    <div class="mx-2 pt-2 dropdown">
+                        <span class="pt-1 mx-1 float-end dropdown-toggle" data-bs-toggle="dropdown"><?= $_SESSION['login']['full_name']; ?></span>
+                        <!-- <img class="rounded  float-end" style="width: 15%;" src="<?= BASE_PATH ?>/public/img/avatar.jpg" alt=""> -->
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?= URL_WEBSITE ?>/admin/user/edit/<?= $_SESSION['login']['id_user']; ?>"><i class="fa fa-user"></i> Edit User</a></li>
+                            <li><a class="dropdown-item" href="<?= URL_WEBSITE ?>/admin/user/edit_password/<?= $_SESSION['login']['id_user']; ?>"><i class="fa fa-lock"></i> Change Password</a></li>
+                            <li>
+                                <button type="button" id="btn-logout" class="btn btn-secondary dropdown-item"><i class="fa fa-power-off"></i> Logout</button>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -81,6 +91,10 @@
             $('.modal-title').text('Logout!!');
             $('.modal-body p').text('Apakah anda yakin?');
         })
+    </script>
+    <script script type="text/javascript">
+        var currentBLang = navigator.language || navigator.userLanguage;
+        console.log('Current browser lang ' + currentBLang);
     </script>
 </body>
 

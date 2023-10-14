@@ -38,6 +38,7 @@ class LoginController extends Controller
             $_SESSION['login']['username'] = $data['username'];
             $_SESSION['login']['password'] = $data['password'];
             $_SESSION['login']['full_name'] = $data['full_name'];
+            $_SESSION['login']['role'] = $data['role'];
 
             $this->redirect('admin');
         } else {
@@ -97,6 +98,8 @@ class LoginController extends Controller
                     $_SESSION['login']['username'] = $dataLogin['username'];
                     $_SESSION['login']['password'] = $dataLogin['password'];
                     $_SESSION['login']['full_name'] = $dataLogin['full_name'];
+                    $_SESSION['login']['role'] = $dataLogin['role'];
+
 
                     return $this->redirect('admin');
                 } else {

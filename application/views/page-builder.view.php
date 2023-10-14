@@ -15,6 +15,16 @@
 
     <meta name="description" content="Welcome Winner" />
     <meta name="keywords" content="winner, prize, money,iphone 15, iphone 14" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="<?= $data['title']; ?>" />
+    <meta property="og:description" content="<?= $data['text_header']; ?>">
+    <meta property="og:type" content="website" />
+    <meta property="og:author" content="NviReview">
+    <meta property="og:site_name" content="<?= $data['title'] ?>">
+    <meta property="og:url" content="<?= URL_WEBSITE . DS . 'p' . DS . $data['slug'] . URL_END ?>" />
+    <meta property="og:image" content="<?php echo $data['gambar_header'] ?>" />
 
     <?php if (!empty($data['custom_css'])) :
         $style = "<style>";
@@ -73,7 +83,8 @@
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.VERTIKAL
+                layout: google.translate.TranslateElement.InlineLayout.VERTIKAL,
+                autoDisplay: false
             }, 'google_translate_element');
         }
     </script>

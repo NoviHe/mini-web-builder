@@ -25,6 +25,11 @@ class AdminController extends Controller
         $this->getController('dashboard');
     }
 
+    public function user($action = '', $parameter = '')
+    {
+        $this->getController('user', $action, $parameter);
+    }
+
     public function builder($action = '', $parameter = '')
     {
         $this->getController('builder', $action, $parameter);
